@@ -13,10 +13,18 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: npm install and build webpack
+        run: |
+          npm install
+          npm run build
+  test:
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [16.x, 18.x]
+        node-version: [10.x, 12.x]
         os: [ubuntu-latest, windows-2022]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
